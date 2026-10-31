@@ -1,0 +1,62 @@
+<a class="skip" href="#main">Skip to content</a>
+<app-arcade />
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" routerLink="/" aria-label="{{ name }}, home">
+      <app-logo />
+      <span class="brand-text">
+        {{ name }}
+        <small>{{ motto }}</small>
+      </span>
+    </a>
+    <button
+      class="menu-button"
+      type="button"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="site-nav"
+      (click)="menuOpen.set(!menuOpen())"
+    >
+      <app-icon [name]="menuOpen() ? 'close' : 'menu'" />
+      <span class="sr-only">Menu</span>
+    </button>
+    <nav id="site-nav" class="site-nav" [class.open]="menuOpen()" aria-label="Main">
+      @for (item of nav; track item.link) {
+        <a [routerLink]="item.link" routerLinkActive="active">{{ item.label }}</a>
+      }
+      <ng-container *ngTemplateOutlet="socialLinks" />
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <router-outlet />
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <app-logo />
+      <div>
+        <strong>{{ name }}</strong>
+        <span>{{ location }}</span>
+      </div>
+    </div>
+    <ng-container *ngTemplateOutlet="socialLinks" />
+    <p class="copyright">© {{ year }} {{ name }} · Dallionz Media LLC</p>
+  </div>
+</footer>
+
+<ng-template #socialLinks>
+  <div class="socials">
+    @for (social of socials; track social.label) {
+      <a
+        [href]="social.href"
+        [attr.aria-label]="social.label"
+        [attr.rel]="social.external ? 'me noopener' : null"
+        [attr.target]="social.external ? '_blank' : null"
+        ><app-icon [name]="social.icon"
+      /></a>
+    }
+  </div>
+</ng-template>
