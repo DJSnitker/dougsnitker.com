@@ -59,10 +59,10 @@ const KEYS: Record<string, keyof Controls> = {
     <div class="cabinet-pad">
       <button type="button" aria-label="Move left" (pointerdown)="hold('left', true)" (pointerup)="hold('left', false)"
         (pointerleave)="hold('left', false)" (pointercancel)="hold('left', false)">◀</button>
-      <button type="button" aria-label="Fire" (pointerdown)="hold('fire', true)" (pointerup)="hold('fire', false)"
-        (pointerleave)="hold('fire', false)" (pointercancel)="hold('fire', false)">FIRE</button>
       <button type="button" aria-label="Move right" (pointerdown)="hold('right', true)" (pointerup)="hold('right', false)"
         (pointerleave)="hold('right', false)" (pointercancel)="hold('right', false)">▶</button>
+      <button type="button" class="pad-fire" aria-label="Fire" (pointerdown)="hold('fire', true)" (pointerup)="hold('fire', false)"
+        (pointerleave)="hold('fire', false)" (pointercancel)="hold('fire', false)">FIRE</button>
     </div>
   `,
 })

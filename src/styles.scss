@@ -1102,10 +1102,10 @@ a:hover {
   }
 }
 
-// On-screen buttons, only on touch screens.
+// On-screen buttons, only on touch screens: move under the left thumb, fire under the right.
 .cabinet-pad {
   display: none;
-  grid-template-columns: 1fr 1.4fr 1fr;
+  grid-template-columns: 1fr 1fr 0.6fr 1.4fr;
   gap: 10px;
 
   button {
@@ -1123,6 +1123,10 @@ a:hover {
       background: var(--glow);
       color: var(--bg);
     }
+  }
+
+  .pad-fire {
+    grid-column: 4;
   }
 }
 
